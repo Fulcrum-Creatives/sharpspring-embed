@@ -14,7 +14,7 @@ namespace SFTC;
  * Plugin Name:       SpringSource Form Tracking Code Embed
  * Plugin URI:        https://github.com/Fulcrum-Creatives/sharpspring-embed
  * Description:       A shortcode for embedding the SpringSource form tracking code
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            Fulcrum Creatives
  * Author URI:        http://fulcrumcreatives.com
  * License:           GPL-2.0+
@@ -69,7 +69,7 @@ if( !class_exists( 'SFTC' ) ) {
     private function define_constants() {
       // Plugin Version
       if ( !defined( 'SFTC_PL_VERSION' ) ) {
-        define( 'SFTC_PL_VERSION', '1.0.3' );
+        define( 'SFTC_PL_VERSION', '1.0.4' );
       }
       // Prefix
       if ( !defined( 'SFTC_PL_PREFIX' ) ) {
