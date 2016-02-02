@@ -24,7 +24,7 @@ if( !class_exists( 'Shortcode' ) ) {
      * @since 1.0.0
      */
     public function __construct() {
-      add_shortcode( 'sharspring_form', array( $this, 'shortcode' ) );
+      add_shortcode( 'springsource_form', array( $this, 'shortcode' ) );
     } // end __construct
 
     /**
