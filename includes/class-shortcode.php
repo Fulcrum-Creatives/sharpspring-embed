@@ -35,7 +35,7 @@ if( !class_exists( 'Shortcode' ) ) {
      */
     public function shortcode($atts, $content = null) {
       $content = str_replace('<br />', '', $content);
-      return html_entity_decode( $content, ENT_QUOTES, 'UTF-8' );
+      return html_entity_decode( $content, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
     } // end shortcode
 
   }
