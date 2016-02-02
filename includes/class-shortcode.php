@@ -35,7 +35,7 @@ if( !class_exists( 'Shortcode' ) ) {
      */
     public function shortcode($atts, $content = null) {
       $content = str_replace('<br />', '', $content);
-      return html_entity_decode( str_replace(array( " &#8216;", "&#8217" ), "'", $content), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+      return html_entity_decode( str_replace(preg_replace("[\u2018\u2019\u201A\u201B\u2032\u2035]", "'", $content), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
     } // end shortcode
 
   }
