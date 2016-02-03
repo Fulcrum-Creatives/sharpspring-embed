@@ -2,7 +2,7 @@
 namespace SFTC;
 
 /**
- * SpringSource Form Tacking Code Embed
+ * SharpSpring Form Tacking Code Embed
  * 
  * @package     SFTC
  * @copyright   Copyright (c) 2014, Fulcrum Creatives
@@ -11,10 +11,10 @@ namespace SFTC;
  * @author      Fulcrum Creatives <dev@fulcrumcreatives.com>
  *
  * @wordpress-plugin
- * Plugin Name:       SpringSource Form Tracking Code Embed
+ * Plugin Name:       SharpSpring Form Tracking Code Embed
  * Plugin URI:        https://github.com/Fulcrum-Creatives/sharpspring-embed
- * Description:       A shortcode for embedding the SpringSource form tracking code
- * Version:           1.0.11
+ * Description:       A shortcode for embedding the SharpSpring form tracking code
+ * Version:           1.2.0
  * Author:            Fulcrum Creatives
  * Author URI:        http://fulcrumcreatives.com
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if( !class_exists( 'SFTC' ) ) {
     /**
      * Instance of the class
      *
-     * @since 0.0.1
+     * @since 1.0.0
      * @var Instance of SFTC class
      */
     private static $instance;
@@ -43,7 +43,7 @@ if( !class_exists( 'SFTC' ) ) {
     /**
      * Instance of the plugin
      *
-     * @since 0.0.1
+     * @since 1.0.0
      * @static
      * @staticvar array 
      * @return Instance
@@ -62,22 +62,22 @@ if( !class_exists( 'SFTC' ) ) {
     /**
      * Define the plugin constants
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @access private
      * @return void
      */
     private function define_constants() {
       // Plugin Version
       if ( !defined( 'SFTC_PL_VERSION' ) ) {
-        define( 'SFTC_PL_VERSION', '1.0.11' );
+        define( 'SFTC_PL_VERSION', '1.2.0' );
       }
       // Prefix
       if ( !defined( 'SFTC_PL_PREFIX' ) ) {
-        define( 'SFTC_PL_PREFIX', 'custom' );
+        define( 'SFTC_PL_PREFIX', 'sftc' );
       }
       // Plugin Options
       if ( !defined( 'SFTC_PL_OPTIONS' ) ) {
-        define( 'SFTC_PL_OPTIONS', 'custom-options' );
+        define( 'SFTC_PL_OPTIONS', 'sftc-options' );
       }
       // Plugin Directory
       if ( !defined( 'SFTC_PL_PLUGIN_DIR' ) ) {
@@ -96,19 +96,21 @@ if( !class_exists( 'SFTC' ) ) {
     /**
      * Load the required files
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @access private
      * @return void
      */
     private function includes() {
       require_once SFTC_PL_PLUGIN_DIR . 'includes/class-shortcode.php';
+      require_once SFTC_PL_PLUGIN_DIR . 'includes/class-mce-button.php';
       $shortcode = new Includes\Shortcode();
+      $mce_button = new Includes\MCEButton();
     }
 
     /**
      * Load the plugin text domain for translation.
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @access public
      */
     public function load_textdomain() {
@@ -127,7 +129,7 @@ if( !class_exists( 'SFTC' ) ) {
     /**
      * Throw error on object clone
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @access public
      * @return void
      */
@@ -138,7 +140,7 @@ if( !class_exists( 'SFTC' ) ) {
     /**
      * Disable unserializing of the class
      *
-     * @since  0.0.1
+     * @since  1.0.0
      * @access public
      * @return void
      */
@@ -151,7 +153,7 @@ if( !class_exists( 'SFTC' ) ) {
 /**
  * Return the instance 
  *
- * @since 0.0.1
+ * @since 1.0.0
  * @return object The Safety Links instance
  */
 function SFTC_Run() {

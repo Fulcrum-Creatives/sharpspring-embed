@@ -30,12 +30,26 @@ if( !class_exists( 'Shortcode' ) ) {
     /**
      * Shortcode
      *
-     * @since  1.0.0
+     * @since  1.2.0
      * @return string 
      */
     public function shortcode($atts, $content = null) {
-      $content = str_replace('<br />', '', $content);
-      return html_entity_decode( str_replace(preg_replace("[\u2018\u2019\u201A\u201B\u2032\u2035]", "'", $content), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+      $a = shortcode_atts( array(
+        'tracking_id' => '',
+        'base_uri'     => '',
+        'endpoint'    => '',
+        'form_id'     => ''
+      ), $atts );
+      ob_start();
+      ?>
+<script type="text/javascript">
+    var __ss_noform = __ss_noform || [];
+    __ss_noform.push(['baseURI', '<?php echo $a['base_uri']; ?>']);
+    __ss_noform.push(['form', '<?php echo $a['form_id']; ?>', '<?php echo $a['endpoint']; ?>']);
+</script>
+<script type="text/javascript" src="https://<?php echo $a['tracking_id']; ?>.marketingautomation.services/client/noform.js?ver=1.24" ></script>
+      <?php
+      return ob_get_clean();
     } // end shortcode
 
   }
